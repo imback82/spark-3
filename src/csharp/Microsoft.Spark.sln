@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Spark.Extensions.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Spark.Extensions.Delta.E2ETest", "Extensions\Microsoft.Spark.Extensions.Delta.E2ETest\Microsoft.Spark.Extensions.Delta.E2ETest.csproj", "{206E16CA-ED59-4F5E-8EA1-9BB7BEEACB63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Spark.REPL", "Microsoft.Spark.REPL\Microsoft.Spark.REPL.csproj", "{1DE3864B-F00F-44ED-85DC-3F7B9CDB3A71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{206E16CA-ED59-4F5E-8EA1-9BB7BEEACB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{206E16CA-ED59-4F5E-8EA1-9BB7BEEACB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{206E16CA-ED59-4F5E-8EA1-9BB7BEEACB63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE3864B-F00F-44ED-85DC-3F7B9CDB3A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE3864B-F00F-44ED-85DC-3F7B9CDB3A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE3864B-F00F-44ED-85DC-3F7B9CDB3A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE3864B-F00F-44ED-85DC-3F7B9CDB3A71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
