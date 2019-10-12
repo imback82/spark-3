@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
-namespace Microsoft.Spark.REPL.Commands
+namespace Microsoft.Spark.REPL.Kernel
 {
     public class StreamKernelEvent
     {

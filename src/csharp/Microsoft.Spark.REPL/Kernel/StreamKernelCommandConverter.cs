@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Microsoft.Spark.REPL.Commands
+namespace Microsoft.Spark.REPL.Kernel
 {
     public class StreamKernelCommandConverter : JsonConverter<StreamKernelCommand>
     {

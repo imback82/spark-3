@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
-using Microsoft.Spark.REPL.Commands;
+using Microsoft.Spark.REPL.Kernel;
 using Newtonsoft.Json;
 
 namespace Microsoft.Spark.REPL
@@ -59,11 +59,11 @@ namespace Microsoft.Spark.REPL
                 |
                 |   await next(command, context);
                 |});".StripMargin();
-            // SubmitCode(process.StandardInput, process.StandardOutput, middleWare, printValue: true);
+            SubmitCode(process.StandardInput, process.StandardOutput, middleWare, printValue: true);
 
             while (true)
             {
-                Console.Write("csharp> ");
+                Console.Write("\ncsharp> ");
                 string input = Console.ReadLine();
                 if (input == ":quit")
                 {
@@ -82,6 +82,10 @@ namespace Microsoft.Spark.REPL
                     }
 
                     break;
+                }
+                else if (string.IsNullOrEmpty(input))
+                {
+
                 }
                 else
                 {
@@ -107,7 +111,7 @@ namespace Microsoft.Spark.REPL
             string output;
             while ((output = reader.ReadLine()) != null)
             {
-                Console.WriteLine(output);
+                Console.WriteLine($"output: {output}");
                 StreamKernelEvent kernelEvent = JsonConvert.DeserializeObject<StreamKernelEvent>(output);
 
                 string value = kernelEvent.GetValue();
@@ -120,6 +124,7 @@ namespace Microsoft.Spark.REPL
                 {
                     break;
                 }
+                Console.WriteLine($"About to do a ReadLine");
             }
         }
     }
