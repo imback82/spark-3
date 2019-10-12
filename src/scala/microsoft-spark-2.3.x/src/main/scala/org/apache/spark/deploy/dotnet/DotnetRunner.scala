@@ -114,6 +114,7 @@ object DotnetRunner extends Logging {
           val builder = new ProcessBuilder(processParameters)
           val env = builder.environment()
           env.put("DOTNETBACKEND_PORT", dotnetBackendPortNumber.toString)
+          env.put("SPARK_VERSION", SPARK_VERSION)
 
           for ((key, value) <- Utils.getSystemProperties if key.startsWith("spark.")) {
             env.put(key, value)

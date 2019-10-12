@@ -101,6 +101,10 @@ namespace Microsoft.Spark
         /// <returns>SparkConf object</returns>
         public SparkConf GetConf() => _conf;
 
+        public string Master => (string)_jvmObject.Invoke("master");
+
+        public string ApplicationId => (string)_jvmObject.Invoke("applicationId");
+
         /// <summary>
         /// This function may be used to get or instantiate a SparkContext and register it as a
         /// singleton object. Because we can only have one active SparkContext per JVM,
@@ -168,6 +172,15 @@ namespace Microsoft.Spark
 
             return sparkConf;
         }
+
+        /// <summary>
+        /// Sets the log Level. This overrides any user-defined log settings.
+        /// </summary>
+        /// <param name="logLevel">
+        /// The desired log level as a string.
+        /// Valid log levels include: ALL, DEBUG, ERROR, FATAL, INFO, OFF, TRACE, WARN.
+        /// </param>
+        public void SetLogLevel(string logLevel) => _jvmObject.Invoke("setLogLevel", logLevel);
 
         /// <summary>
         /// Sets a human readable description of the current job.
