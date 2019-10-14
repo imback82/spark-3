@@ -7,9 +7,8 @@ set SHELL_DIR=%~dp0
 @REM Remove trailing backslash \
 set SHELL_DIR=%SHELL_DIR:~0,-1%
 
-if "%JAVA_HOME%" == "" goto :javahomeerror
 if "%SPARK_HOME%" == "" goto :sparkhomeerror
-if "%SPARK_MAJOR_MINOR_VERSION%" == "" goto :sparkmajorminofrversionerror
+if "%SPARK_MAJOR_MINOR_VERSION%" == "" goto :sparkmajorminorversionerror
 if "%DOTNET_SPARK_VERSION%" == "" goto :dotnetsparkversionerror
 if "%DOTNET_SPARK_CONFIGURATION%" == "" goto :dotnetsparkconfigurationerror
 
@@ -17,15 +16,11 @@ if "%DOTNET_SPARK_CONFIGURATION%" == "" goto :dotnetsparkconfigurationerror
 
 goto :eof
 
-:javahomeerror
-	@echo [sparkdotnet-shell.cmd] Error - JAVA_HOME environment variable is not set
-	goto :eof
-
 :sparkhomeerror
 	@echo [sparkdotnet-shell.cmd] Error - SPARK_HOME environment variable is not set
 	goto :eof
 	
-:sparkmajorminofrversionerror
+:sparkmajorminorversionerror
 	@echo [sparkdotnet-shell.cmd] Error - SPARK_MAJOR_MINOR_VERSION environment variable is not set
 	@echo [sparkdotnet-shell.cmd] It should be set to 2.3 or 2.4, for example.
 	goto :eof
