@@ -68,12 +68,12 @@ Once the Spark application is [bundled](https://spark.apache.org/docs/latest/sub
         <li>Please note that this option is only applicable for yarn mode.</li>
         <li>It supports specifying file names with # similar to Hadoop.</br>
       </ul>
-      <i>e.g. <code>hdfs://&lt;path to your worker file&gt;/Microsoft.Spark.Worker.<version>.zip#worker</code>. This will copy and extract the zip file to <code>worker</code> folder.</i></li></td>
+      <i>e.g. <code>hdfs://&lt;path to your worker file&gt;/Microsoft.Spark.Worker.zip#worker</code>. This will copy and extract the zip file to <code>worker</code> folder.</i></li></td>
   </tr>
   <tr>
     <td><b>application-jar</b></td>
     <td>Path to a bundled jar including your application and all dependencies.</br>
-    <i>e.g. hdfs://&lt;path to your jar&gt;/microsoft-spark-<version>.jar</i></td>
+    <i>e.g. hdfs://&lt;path to your jar&gt;/microsoft-spark-&lt;version&gt;.jar</i></td>
   </tr>
   <tr>
     <td><b>application-arguments</b></td>
@@ -95,8 +95,7 @@ Once the Spark application is [bundled](https://spark.apache.org/docs/latest/sub
 **Answer:** Please try restarting your PowerShell window (or other command windows) first so that it can take the latest environment variable values. Then start your program.
 
 #### 3. Question: After submitting my Spark application, I get the error `System.TypeLoadException: Could not load type 'System.Runtime.Remoting.Contexts.Context'`.
-> **Command:** %SPARK_HOME%\bin\spark-submit --class org.apache.spark.deploy.dotnet.DotnetRunner --master local microsoft-spark-<version>.jar  mySparkApp.exe</br>
-**Error:** [ ] [ ] [Error] [TaskRunner] [0] ProcessStream() failed with exception: System.TypeLoadException: Could not load type 'System.Runtime.Remoting.Contexts.Context' from assembly 'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=...'.
+> **Error:** [ ] [ ] [Error] [TaskRunner] [0] ProcessStream() failed with exception: System.TypeLoadException: Could not load type 'System.Runtime.Remoting.Contexts.Context' from assembly 'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=...'.
 
 **Answer:** Please check the `Microsoft.Spark.Worker` version you are using. We currently provide two versions: **.NET Framework 4.6.1** and **.NET Core 2.1.x**. In this case, `Microsoft.Spark.Worker.net461.win-x64-<version>` (which you can download [here](https://github.com/dotnet/spark/releases)) should be used since `System.Runtime.Remoting.Contexts.Context` is only for .NET Framework.
 
