@@ -889,9 +889,26 @@ namespace Microsoft.Spark.Sql
             using (ISocketWrapper socket = SocketFactory.CreateSocket())
             {
                 socket.Connect(IPAddress.Loopback, port, secret);
-                foreach (Row row in new RowCollector().Collect(socket))
+                int readStatus = 1;
+                while (readStatus == 1)
                 {
-                    yield return row;
+                    SerDe.Write(socket.OutputStream, 1);
+                    socket.OutputStream.Flush();
+
+                    readStatus = SerDe.ReadInt32(socket.InputStream);
+
+                    if (readStatus == 1)
+                    {
+                        foreach (Row row in new RowCollector().Collect(socket))
+                        {
+                            yield return row;
+                        }
+                    }
+                    else
+                    {
+                        // Handle
+                    }
+
                 }
             }
         }
